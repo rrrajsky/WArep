@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+
+            body{
+
+                background-color: rgb(41, 0, 20);
+                color:white;
+                font-family: "Lucida Console", "Courier New", monospace;
+                color:bisque;
+                margin-left: 50px;
+                
+            }   
+
+            .light-mode{
+
+                background-color: rgb(255, 164, 187);
+                color:black;
+
+            }
+
+
+            .light-mode header{
+
+                color:black;
+
+            }
+
+            section{
+
+                background-color: black;
+                margin-bottom:50px;
+                padding:10px;
+                border:1px solid rgb(121, 0, 0);
+                border-radius: 10px;
+                
+
+            }
+
+            .light-mode section{
+
+                background-color: bisque;
+                color:black;
+
+            }
+
+        </style>
+    </head>
+
+    <body>
+
+        <header>
+
+            <button name="cudlik" onclick="activateLM()">Click me for dark/light mode toggle!!!</button>            
+
+            <h1>Vítej do liščí jeskyně. Zde se dozvíš vše, co o mně potřebuješ vědět.</h1>
+
+        </header>
+
+        <section>
+            <h3>Rajský Matyáš jméno mé jest! Jsem vlastníkem Foxeen Industries, o čemž povím níže!</h3>
+        </section>
+
+        <article>
+
+            <img src="https://www.pbs.org/wnet/nature/files/2017/09/x1WLcZn-asset-mezzanine-16x9-6kkb4dA.jpg" alt="a fox!!" style="margin-bottom:50px;height:50%; width: 50%;">
+
+        </article>
+    
+        <section>
+
+            <h3>Mé dosažené vzdělání:</h3>
+            <p>- Prestižní, nejlepší základní škola</p>
+            <p>- Jak úspěšně provádět scam-cally (Kurz po telefonu)</p>
+            <p>- Jak vydělat 100 milionů šilinků za 3 týdny (Online kurz)</p>
+            <p>- Podivný svět Facebook Marketplace, aneb. jak prodat noubuk a mít z toho profit (Přednáška)</p>
+
+        </section>
+
+        <section>
+
+            <h2>Foxeen Industries</h2>
+            <h3>Má firma, stoprocentně existující a registrovaná.</h3>
+            <h3>Co vlastně poskitujeme za služby?</h3>
+            <p>- Rady a kurzy pro všechno co Vás napadne</p>
+            <p>- Profesionální voice acting pro jakýkoliv projekt (Ano, opravdu jakýkoliv ;))</p>
+            <p>- Edit videí špičkové kvality</p>
+            <p>A mnohem víc...</p>
+            <br><br>
+            <h3>100% spokojenost zákazníků. Jen se podívejte na některé z recenzí:</h3>
+            <p>Pane bože, jak jen někdo může mít takových služeb a všechny je dělat tak dokonale??<p>
+            <p>- Jan Člověk</p>
+            <br>
+            <p>Tak spokojená jsem ještě s ničím v životě nebyla!</p>
+            <p>- Kateřina Lidská</p>
+        </section>
+
+        <footer>
+
+            <a href="https://www.instagram.com/foxeenowo/">
+                <img src="https://png.pngtree.com/element_our/sm/20180630/sm_5b37de3263964.png" alt="InstaLink" style="margin-left:20px;width:50px;height:50px;">
+            </a>
+
+            <a href="https://github.com/Foxeen">
+                <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitLink" style="margin-left:15px;width:50px;height:50px;">
+            </a>
+
+        </footer>
+
+    </body>
+
+    <script>
+
+       function activateLM() {
+            var element = document.body;
+            element.classList.toggle("light-mode");
+        }
+
+    </script>
+
+</html>

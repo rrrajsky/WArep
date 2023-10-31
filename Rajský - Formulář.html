@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+
+    <body style="background-color: bisque;">
+    <h1>Jak jste si užili akci? Anonymní dotazník</h1>
+    <form method="post" action="http://jecna.lmsoft.cz/form.php">
+        Vyberte pohlaví<br>
+        <input type="radio" id="muz" name="muz" value="Muz">
+        <label for="muz">Muž</label><br>
+        <input type="radio" id="zena" name="zena" value="Zena">
+        <label for="zena">Žena</label><br>
+        <input type="radio" id="jine" name="jine" value="Jine">
+        <label for="jine">Jiné</label><br>
+        <input type="radio" id="ne" name="ne" value="Nechci">
+        <label for="ne">Nechci uvádět</label><br><br>
+        <label for="hodnoceni">Na škále od 1 do 10, jak jste si užili akci?</label><br>
+        <select id="hodnoceni" name="hodnoceni">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select><br><br>
+        <label for="nejo">Jaká část programu Vám přišla nejlepší? (Vyberte vše, co platí)</label><br>
+        <input type="checkbox" id="muzika" name="muzika" value="Muzika">
+        <label for="muzika">Muzika</label><br>
+        <input type="checkbox" id="jidlo" name="jidlo" value="jidlo">
+        <label for="jidlo">Jídlo</label><br>
+        <input type="checkbox" id="ubytovani" name="ubytovani" value="Ubytovani">
+        <label for="ubytovani">Ubytování</label><br>
+        <input type="checkbox" id="zabava" name="zabava" value="Zabava">
+        <label for="zabava">Zábava</label><br><br>
+        <label for="priste">Kam bychom měli jet příště?</label><br>
+        <input type="text" id="priste" name="priste"><br><br>
+        <label for="fotka">Zde můžete vložit fotku, abyste vstoupili do soutěže:</label><br>
+        <input type="file" if="fotka" name="fotka"><br><br>
+        <textarea name="pozn" id="pozn" cols="30" rows="10">Pište sem, jestli máte nějaké poznámky.</textarea><br><br>
+        <input type="submit" value="Odeslat">
+    </body>
+</html>
