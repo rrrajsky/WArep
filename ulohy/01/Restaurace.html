@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+
+
+  <div class="row"><h2>Objednávka</h2>
+
+<form>
+    <div class="form-item">
+        <label for="customerName">Jméno zákazníka:</label>
+        <input type="text" id="customerName" name="customerName" required>
+    </div>
+    <div class="form-item">
+        <label for="phoneNumber">Telefoní číslo:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" required>
+    </div>
+    <div class="form-item">
+        <label for="deliveryAddress">Adresa doručení:</label>
+        <textarea id="deliveryAddress" name="deliveryAddress" required></textarea>
+    </div>
+    <div class="form-item">
+        <label for="order">Objednávka:<span class="ribbon">Purple mode</span></label>
+        <select id="order" name="order">
+            <option value="none">--Vyberte jídlo--</option>
+            <option value="Kure">Kuře</option>
+            <option value="kures">Spicy kuře</option>
+            <option value="krevety">krevety</option>
+            <option value="Nudle">Nudle</option>
+            <option value="zelenina">zelenina na kary</option>
+        </select>
+    </div>
+    <div class="form-item">
+        <label for="mnoz">Množství:</label>
+        <input type="text" id="mnoz" name="mnoz" required>
+    </div>
+  
+   
+    
+  <div class="row">
+    <div>
+      <label for="subject">Informace</label>
+    </div>
+    <div class="col-75">
+      <textarea id="subject" name="subject" placeholder="poznámka pro kuchyni(alergie,...)" style="height:200px"></textarea>
+    </div>
+  </div>
+  <br>
+   <div class="submit-button">
+        <input type="submit" value="Odešlete">
+    </div>
+  </form>
+</div>
+
+</body>
+</html>
+
+
