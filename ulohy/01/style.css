@@ -48,3 +48,61 @@
           font-family: 'Hiragino Kaku Gothic Pro', 'WenQuanYi Zen Hei', '微軟正黑體', '蘋果儷中黑', Helvetica, Arial, sans-serif;
          background-color: rgb(255, 127, 0);
          }
+
+h2 {
+          border-bottom: 2px solid #333;
+          padding-bottom: 5px;
+      }
+
+      ul {
+          list-style: none;
+          padding: 0;
+      }
+
+      li {
+          margin-bottom: 10px;
+      }
+
+      .dish {
+          font-weight: bold;
+          color: #fffb28;
+
+      }
+
+      .price {
+          float: right;
+          color: #0e5e00;
+      }
+
+      
+      header {
+        background-color: #1e1d22;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+    }
+    
+    
+    nav li {
+        display: inline;
+        margin: 0 10px;
+        font-size: 12px;
+    }
+    
+    nav a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    nav ul li a:hover {
+      color: rgb(255, 0, 0);
+  }
+  section:target {
+    background-color: rgb(255, 161, 66);
+    border-radius: 10px;
+
+}
+section {
+  margin-bottom: 20px;
+  padding: 20px;
+}
