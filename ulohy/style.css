@@ -1,0 +1,245 @@
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    color:white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h1{
+    font-size: 50px;
+    font-weight: bold;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+header {
+    width: 100%;
+    height: 100px;
+    background-color: rgb(0, 113, 189);
+    display: flex;
+    align-items: center;
+}
+
+p {
+    justify-self: left;
+    padding-left: 10px;
+}
+
+nav {
+    background-color: rgb(129, 184, 223);
+    align-items: center;
+    justify-content: space-evenly;
+    width: auto;
+    height: 50px;
+    margin-left: auto;
+    display: none;
+}
+
+ul {
+    display: none;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+li {
+    list-style-type: none;
+    padding: 15px;
+}
+
+.centerDiv {
+    margin: 0 auto;
+    width: 66vw;
+    justify-self: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(129, 184, 223);
+    margin-left: 10px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hlavniBox {
+    width: 66vw;
+    height: auto;
+    margin: 0 auto;
+    display: grid;
+}
+
+.boxContainer {
+    margin-top: 20px;
+    width: 75%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
+
+.boxJedna,
+.boxDva,
+.boxTri,
+.boxFooter {
+    height: 105px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+    flex-grow: 1;
+}
+
+.boxJedna{
+    background-color: #FBB03B;
+    width: 133.3%;
+}
+
+.boxDva {
+    background-color: #F15A25;
+    flex-grow: 2;
+    width: 133.3%;
+}
+
+.boxTri {
+    background-color: #C2272D;
+    flex-grow: 3;
+    width: 133.3%;
+}
+
+.boxFooter{
+    background-color: #B296C7;
+    flex-grow: 3;
+    height: 105px;
+}
+
+aside{
+    background-color: #01A89E;
+    margin-top: 20px;
+    height: 210px;
+    width: 100%;
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer{
+    margin: 20px auto 0px 0px;
+    width: 100%;
+}
+
+footer .centerDiv{
+    background-color: #662E91;
+    width: 100%;
+    height: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+footer .boxContainer{
+    margin: 0 auto;
+    width: 66.1%;
+    height: 15vh;
+}
+
+@media screen and (min-width: 600px) { 
+
+    .boxContainer {
+        margin-top: 20px;
+        width: 75%;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        flex-direction: row;
+        gap:20px;
+    }
+
+    .hlavniBox{
+        display: grid;
+    }
+
+
+    footer .boxContainer {
+        margin-top: 20px;
+        width: 75%;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        flex-direction: row;
+        gap:20px;
+        }
+
+        
+    .boxJedna{
+        height: 210px;
+        flex-basis: 22.6%;
+    }
+
+    .boxTri{
+        height: 210px;
+        flex-basis: 47.6%;
+    }
+    .boxDva{
+        height: 210px;
+        flex-basis: 30.6%;
+        display: none;
+    }
+
+
+}
+
+@media only screen and (min-width: 1024px){
+    
+    .boxContainer {
+    margin-top: 20px;
+    width: 75%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    flex-direction: row;
+    gap:20px;
+    }
+
+    .hlavniBox{
+        display: flex;
+    }
+
+    aside{
+        width: 24%;
+        margin-left: 20px;
+        margin-bottom: auto;
+        height: 670px;
+    }
+
+    nav{
+        display: flex;
+    }
+
+    .boxJedna{
+        height: 210px;
+        flex-basis: 22.6%;
+    }
+    .boxDva{
+        height: 210px;
+        flex-basis: 30.6%;
+        display: flex;
+    }
+    .boxTri{
+        height: 210px;
+        flex-basis: 47.6%;
+    }
+}
