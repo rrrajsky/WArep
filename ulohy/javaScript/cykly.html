@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript" src="https://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=3ZMX6cArl-HdFAqlATZGihHpe0eGpj4jZOZlX8ZtkdvtCAxgX5x-piiwkymLVyhb7bXqKS-J0LDOaqtOEDj3cuxzp2BC1sTwd810fu8gP_dU6Hhu92t-2kxzVBzclD3TogbMdncyMrwwsU5OSAwOAw" charset="UTF-8"></script><script>
+
+    window.addEventListener("DOMContentLoaded", (event) => {
+
+        let btn6 = document.getElementById('hvezdy');
+        btn6.addEventListener('click', (e) => {
+
+        function star() {
+
+        document.write("<h3>První obrazec:</h3>");
+        for (let i = 1; i <= 5; i++) {
+            for (let j = 1; j <= i; j++) {
+                document.write("*");
+            }
+            document.write("<br>");
+        }
+    
+        document.write("<h3>Druhý obrazec:</h3>");
+        for (let i = 1; i <= 5; i++) {
+            for (let j = 5; j >= i; j--) {
+                document.write("&nbsp;");
+            }
+            for (let k = 1; k <= i; k++) {
+                document.write("*");
+            }
+            document.write("<br>");
+        }
+    
+        document.write("<h3>Třetí obrazec:</h3>");
+        for (let i = 5; i >= 1; i--) {
+            for (let j = 1; j <= i; j++) {
+                document.write("*");
+            }
+            document.write("<br>");
+        }
+        }
+
+        document.getElementById('hvezdy').innerHTML=star();
+
+        });
+
+    });
+
+    </script>
+
+</head>
+<body>
+    <h1>Cykly:</h1>
+
+    <h2>Hvezdicky:</h2>
+    <input type="button" id="hvezdy" value="Kresli!"><p id="star"></p><br><br>
+
+</body>
+</html>
