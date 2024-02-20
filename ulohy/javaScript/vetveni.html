@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript" src="https://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=3ZMX6cArl-HdFAqlATZGihHpe0eGpj4jZOZlX8ZtkdvtCAxgX5x-piiwkymLVyhb7bXqKS-J0LDOaqtOEDj3cuxzp2BC1sTwd810fu8gP_dU6Hhu92t-2kxzVBzclD3TogbMdncyMrwwsU5OSAwOAw" charset="UTF-8"></script><script>
+
+    window.addEventListener("DOMContentLoaded", (event) => {
+
+        let btn = document.getElementById('calc');
+        btn.addEventListener('click', (e) => {
+
+            year = Number(document.getElementById('year').value);
+
+            function test(year){
+                if((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0) == true){
+                    return "rok je prestupny"
+                } else {
+                    return "rok neni prestupny"
+                }
+                
+            }   
+
+        document.getElementById('yr').innerHTML=test(year);
+
+        });
+
+        let btn2 = document.getElementById('calc2');
+        btn2.addEventListener('click', (e) => {
+
+            num1 = Number(document.getElementById('a').value);
+            num2 = Number(document.getElementById('b').value);
+
+            function zero(num1, num2){
+                if(num1 === 0 && num2 !== 0){
+                    return "Prvni cislo je rovno nule"
+                } else if (num2 === 0 && num1 !== 0){
+                    return "Druhe cislo je rovno nule"
+                } else if (num1 ===0 && num2 === 0){
+                    return "Obe cisla jsou rovne nule"
+                } else {
+                    return "Obe cisla jsou nenulova"
+                }
+            }
+
+            document.getElementById('zero').innerHTML=zero(num1,num2);
+
+        });
+
+        let btn3 = document.getElementById('calc3');
+        btn3.addEventListener('click', (e) => {
+
+            dist = Number(document.getElementById('taxik').value);
+
+            function steal(dist){
+                if(dist > 0 && dist <= 19){
+                    return "Za tuto jizdu zaplati zakaznik " + dist*25 + " kc"
+                } else if(dist > 19 && dist <= 39){
+                    return "Za tuto jizdu zaplati zakaznik " + dist*23 + " kc"
+                } else if(dist > 39 && dist <= 59){
+                    return "Za tuto jizdu zaplati zakaznik " + dist*20 + " kc"
+                } else {
+                    return "Za tuto jizdu zaplati zakaznik " + dist*17 + " kc"
+                }
+            }
+
+            document.getElementById('steal').innerHTML=steal(dist);
+
+        });
+
+        let btn4 = document.getElementById('calc4');
+        btn4.addEventListener('click', (e) => {
+
+            height = Number(document.getElementById('high').value)/10;
+            width = Number(document.getElementById('wide').value);
+
+            function heavy(height, width){
+                if(((width) / Math.sqrt(height)) < 18.5){
+                    return "Mate podvahub "
+                } else if (((width) / Math.sqrt(height)) >= 18.5 && ((width) / Math.sqrt(height)) < 24.9) {
+                    return "Vase vaha je v norme "
+                } else if (((width) / Math.sqrt(height)) >= 25 && ((width) / Math.sqrt(height)) < 29.9) {
+                    return "Mate nadvahu "
+                } else {
+                    return "Jste obezni "
+                }
+            }
+
+            document.getElementById('heavy').innerHTML=heavy(height,width)
+
+        });
+
+    });
+
+    </script>
+
+</head>
+<body>
+    <h1>Na rozcviceni:</h1>
+
+    <h2>Prestupne roky:</h2>
+    <label for="year">Zadejte rok:</A> </label>
+    <input type="text" name="year" id="year" value="2000"><br>
+    <input type="button" id="calc" value="Pocitej!"><p id="yr"></p><br><br>
+
+    <h2>Dve cisla V2:</h2>
+    <label for="a">Zadejte cislo 1:</A> </label>
+    <input type="text" name="a" id="a" value="0"><br>
+    <label for="b">Zadejte cislo 2:</A> </label>
+    <input type="text" name="b" id="b" value="0"><br>
+    <input type="button" id="calc2" value="Pocitej!"><p id="zero"></p><br><br>
+
+    <h1>Uzitecne:</h1>
+
+    <h2>BMI:</h2>
+    <label for="high">Zadejte vysku:</A> </label>
+    <input type="text" name="high" id="high" value="0"><br>
+    <label for="wide">Zadejte vahu:</A> </label>
+    <input type="text" name="wide" id="wide" value="0"><br>
+    <input type="button" id="calc4" value="Pocitej!"><p id="heavy"></p><br><br>
+
+    <h2>Taxi:</h2>
+    <label for="taxik">Zadejte ujetou vzdalenost v kilometrech (zaokrouhlit nahoru):</A> </label>
+    <input type="text" name="taxik" id="taxik" value="0"><br>
+    <input type="button" id="calc3" value="Pocitej!"><p id="steal"></p><br><br>
+
+</body>
+</html>
