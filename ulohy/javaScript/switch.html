@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript" src="https://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=3ZMX6cArl-HdFAqlATZGihHpe0eGpj4jZOZlX8ZtkdvtCAxgX5x-piiwkymLVyhb7bXqKS-J0LDOaqtOEDj3cuxzp2BC1sTwd810fu8gP_dU6Hhu92t-2kxzVBzclD3TogbMdncyMrwwsU5OSAwOAw" charset="UTF-8"></script><script>
+
+    window.addEventListener("DOMContentLoaded", (event) => {
+
+        let btn5 = document.getElementById('calc5');
+        btn5.addEventListener('click', (e) => {
+
+            znam = Number(document.getElementById('znam').value);
+
+            function word(znam){
+                switch(znam){
+                    case(1):
+                        return "Vyborne"
+                    case(2):
+                        return "Chvalitebne"
+                    case(3):
+                        return "Dobre"
+                    case(4):
+                        return "Dostacujici"
+                    case(5):
+                        return "Nedostacujici"
+                    default:
+                        return "Neplatna Znamka"
+                }
+            }
+
+            document.getElementById('word').innerHTML=word(znam);
+
+        });
+
+    });
+
+    </script>
+
+</head>
+<body>
+    <h1>Switch:</h1>
+    
+    <h2>Znamky:</h2>
+    <label for="taxik">Zadejte znamku:</A> </label>
+    <input type="text" name="znam" id="znam" value="0"><br>
+    <input type="button" id="calc5" value="Pocitej!"><p id="word"></p><br><br>
+
+</body>
+</html>
