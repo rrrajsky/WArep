@@ -61,3 +61,43 @@ function generateSliders(data) {
 
     });
 }
+
+function showList(event) {
+    event.preventDefault();
+    
+    const monthId = document.getElementById("months").value;
+    const url = `http://ajax1.lmsoft.cz/procedure.php?cmd=getSummaryOfDrinks${monthId == 0 ? "" : `&month=${monthId}`}`;
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Basic ' + btoa('coffee:kafe'),
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Cannot get data");
+        }
+        return response.json();
+    })
+    .then(data => {
+        const oldTable = document.getElementById("table");
+        if (oldTable) oldTable.remove();
+
+        const table = document.createElement("table");
+        table.id = "table";
+        table.innerHTML = "<tr><th>Název</th><th>Počet</th><th>Jméno</th></tr>";
+        
+        data.forEach(value => {
+            const row = document.createElement("tr");
+            row.innerHTML = `<td>${value[0]}</td><td>${value[1]}</td><td>${value[2]}</td>`;
+            table.appendChild(row);
+        });
+
+        document.body.appendChild(table);
+    })
+    .catch(error => {
+        alert(error.message);
+    });
+}
