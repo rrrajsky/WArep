@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "wIy9gVL3WCc=",
+  "success": true,
+  "projectFilePath": "D:\\nic2\\kafe\\kafe\\kafe.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Uživatel\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
