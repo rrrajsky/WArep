@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Chat</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        #chat { width: 100%; height: 300px; border: 1px solid #ccc; overflow-y: scroll; margin-bottom: 10px; }
+        #message { width: 80%; padding: 10px; }
+        #send { padding: 10px; }
+    </style>
+</head>
+<body>
+
+<div id="chat"></div>
+<input id="message" type="text" placeholder="Zadejte zprávu">
+<button id="send">Odeslat</button>
+
+<script>
+    // Připojení k WebSocket serveru
+    const socket = new WebSocket('ws://' + window.location.host);
+
+    const chat = document.getElementById('chat');
+    const messageInput = document.getElementById('message');
+    const sendButton = document.getElementById('send');
+
+socket.onmessage = function(event) {
+    event.data.text().then(function(text) {
+        const newMessage = document.createElement('div');
+        newMessage.textContent = text;  // Nyní správně vykreslí zprávu
+        chat.appendChild(newMessage);
+        chat.scrollTop = chat.scrollHeight;
+    });
+};
+
+
+    // Když uživatel klikne na "Odeslat"
+    sendButton.onclick = function() {
+        const msg = messageInput.value;
+        socket.send(msg);
+        messageInput.value = '';
+    };
+</script>
+
+</body>
+</html>
