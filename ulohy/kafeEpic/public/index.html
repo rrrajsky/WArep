@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coffee Terminal</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    .section { margin-bottom: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2; }
+    .highlight { background-color: #ffdddd; }
+  </style>
+</head>
+<body>
+
+<h1>Coffee Terminal</h1>
+
+<div class="section">
+  <h2>Users and Coffees</h2>
+  <table id="usersTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Coffees</th>
+        <th>Last Coffee</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<div class="section">
+  <h2>Task List</h2>
+  <table id="tasksTable">
+    <thead>
+      <tr>
+        <th>Task</th>
+        <th>Assigned To</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<script>
+  const usersTableBody = document.querySelector('#usersTable tbody');
+  const tasksTableBody = document.querySelector('#tasksTable tbody');
+
+  const ws = new WebSocket('ws://localhost:3000');
+
+  ws.onmessage = (event) => {
+    const data = JSON.parse(event.data);
+
+    // Update users table
+    usersTableBody.innerHTML = '';
+    data.users.forEach(user => {
+      const row = `<tr>
+        <td>${user.name}</td>
+        <td>${user.coffees}</td>
+        <td>${user.lastCoffee}</td>
+      </tr>`;
+      usersTableBody.insertAdjacentHTML('beforeend', row);
+    });
+
+    // Update tasks table
+    tasksTableBody.innerHTML = '';
+    data.tasks.forEach(task => {
+      const row = `<tr class="${task.assignedTo ? (task.completed ? '' : 'highlight') : ''}">
+        <td>${task.task}</td>
+        <td>${task.assignedTo || 'Unassigned'}</td>
+        <td>${task.completed ? 'Completed' : 'Pending'}</td>
+      </tr>`;
+      tasksTableBody.insertAdjacentHTML('beforeend', row);
+    });
+  };
+</script>
+
+</body>
+</html>
