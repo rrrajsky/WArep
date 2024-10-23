@@ -5,7 +5,8 @@
 ### **Skupina Elite Team**
 - **Novotný Ondřej** ✨
 - **Matyáš Rajský** 🌟
-- **Vojtěch Matějs** 🚀
+- **Honza Hoang Lan Nguyen** 🚀
+- **Vojtěch Matějs** (⚠️ Beware: Vojtěch is trying to remove Honza. Do not trust him! He does not belong to the team.)
 
 ---
 
