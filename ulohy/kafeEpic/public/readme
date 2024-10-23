@@ -1,13 +1,11 @@
-# 🌟 Kaffe App 🌟
+Každý může jiného uživatel pozvat vygenerováním QR kód s platností 10min. Ten ho načte a zaregistruje se.
 
-## Meet the Team
+Bude mít dvě záložky. První slouží k zadání, že uživatel si uvařil kafe. Zadá vše, co si uvařil a jedním kliknutím ho odešle.
 
-### **Skupina Elite Team**
-- **Novotný Ondřej** ✨
-- **Matyáš Rajský** 🌟
-- **Honza Hoang Lan Nguyen** 🚀
-- **Vojtěch Matějs** (⚠️ Beware: Vojtěch is trying to remove Honza. Do not trust him! He does not belong to the team.)
+Druhá bude ukazovat celkový přehled, který bude vidět i na terminálu.
 
----
+Pokud něco dochází (mléko, kafe) nebo je třeba že je třeba kávovar umít a vyčistit. Jakýkoliv uživatel toto může vyhodit do burzy a visí to tam, dokud si to někdo nepřevezme. Všichni vidí na terminálu, kdo má úkol na starosti a zda ho splnil či ne.
 
-Thank you for being a part of our journey with Kaffe! ☕️
+Pomocí workeru implementujte i push notifikace pro výše zmíněné funkce.
+
+při výpadku spojení se pokusí 10x o znovu navázání, pak to může vzdát.
