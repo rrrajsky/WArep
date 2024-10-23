@@ -1,11 +1,1 @@
-Každý může jiného uživatel pozvat vygenerováním QR kód s platností 10min. Ten ho načte a zaregistruje se.
-
-Bude mít dvě záložky. První slouží k zadání, že uživatel si uvařil kafe. Zadá vše, co si uvařil a jedním kliknutím ho odešle.
-
-Druhá bude ukazovat celkový přehled, který bude vidět i na terminálu.
-
-Pokud něco dochází (mléko, kafe) nebo je třeba že je třeba kávovar umít a vyčistit. Jakýkoliv uživatel toto může vyhodit do burzy a visí to tam, dokud si to někdo nepřevezme. Všichni vidí na terminálu, kdo má úkol na starosti a zda ho splnil či ne.
-
-Pomocí workeru implementujte i push notifikace pro výše zmíněné funkce.
-
-při výpadku spojení se pokusí 10x o znovu navázání, pak to může vzdát.
+⚠️-impostors
