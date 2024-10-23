@@ -54,7 +54,6 @@
   ws.onmessage = (event) => {
     const data = JSON.parse(event.data);
 
-    // Update users table
     usersTableBody.innerHTML = '';
     data.users.forEach(user => {
       const row = `<tr>
@@ -64,8 +63,7 @@
       </tr>`;
       usersTableBody.insertAdjacentHTML('beforeend', row);
     });
-
-    // Update tasks table
+    
     tasksTableBody.innerHTML = '';
     data.tasks.forEach(task => {
       const row = `<tr class="${task.assignedTo ? (task.completed ? '' : 'highlight') : ''}">
