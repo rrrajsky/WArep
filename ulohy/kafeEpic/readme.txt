@@ -1,10 +1,5 @@
-nejdriv ve slozce kde mas server.js a slozku public
-npm init -y
-npm install express ws
-
-pak spustit
-node server.js
-
-
-tohle to spusti na localhost:3000
-potreba upravit a dat na nginx
+Skupina Elite team
+Novotný Ondřej
+Matyáš Rajský
+Honza Hoang Lan Nguyen
+Vojtěch Matějs se nám snaží odstranit honzu, nevěřte mu. Nepatří do tímu.
