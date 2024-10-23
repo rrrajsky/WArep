@@ -18,13 +18,13 @@
 <h1>Coffee Terminal</h1>
 
 <div class="section">
-  <h2>Users and Coffees</h2>
+  <h2>Uzivatele a kafe</h2>
   <table id="usersTable">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Coffees</th>
-        <th>Last Coffee</th>
+        <th>Jmeno</th>
+        <th>Kafe</th>
+        <th>Posledni kafe</th>
       </tr>
     </thead>
     <tbody></tbody>
@@ -32,12 +32,12 @@
 </div>
 
 <div class="section">
-  <h2>Task List</h2>
+  <h2>Seznam ukolut</h2>
   <table id="tasksTable">
     <thead>
       <tr>
-        <th>Task</th>
-        <th>Assigned To</th>
+        <th>Ukol</th>
+        <th>Prirazeno</th>
         <th>Status</th>
       </tr>
     </thead>
@@ -68,8 +68,8 @@
     data.tasks.forEach(task => {
       const row = `<tr class="${task.assignedTo ? (task.completed ? '' : 'highlight') : ''}">
         <td>${task.task}</td>
-        <td>${task.assignedTo || 'Unassigned'}</td>
-        <td>${task.completed ? 'Completed' : 'Pending'}</td>
+        <td>${task.assignedTo || 'Nikomu'}</td>
+        <td>${task.completed ? 'Splneno' : 'Pracuje se na'}</td>
       </tr>`;
       tasksTableBody.insertAdjacentHTML('beforeend', row);
     });
