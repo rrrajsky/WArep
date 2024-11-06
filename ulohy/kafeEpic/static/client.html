@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotřeba kávy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Spotřeba kávy</h1>
+        <div class="tabs">
+            <button id="tab-drink" class="tab active">Zadat spotřebu</button>
+            <button id="tab-overview" class="tab">Přehled</button>
+        </div>
+        <div id="drink-tab-content" class="tab-content active">
+            <label for="user">Jméno:</label>
+            <input type="text" id="user" placeholder="Vaše jméno">
+            <label for="coffee-count">Počet káv:</label>
+            <input type="number" id="coffee-count" min="1" value="1">
+            <button id="submit-button">Odeslat</button>
+        </div>
+        <div id="overview-tab-content" class="tab-content">
+            <h2>Celkový přehled</h2>
+            <div id="overview"></div>
+        </div>
+    </div>
+    <script src="client.js"></script>
+</body>
+</html>
