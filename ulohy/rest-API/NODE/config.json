@@ -1,0 +1,9 @@
+{
+    "development": {
+      "username": "root",
+      "password": "your_password",
+      "database": "restapi",
+      "host": "127.0.0.1",
+      "dialect": "mysql"
+    }
+  }
