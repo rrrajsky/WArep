@@ -5,50 +5,69 @@ function connectWebSocket() {
     socket = new WebSocket("ws://dev.spsejecna.net:20492");
 
     socket.onopen = () => {
-        console.log("Connected to WebSocket server");
-        retryCount = 0; // Reset retry count
+        console.log("Připojeno k WebSocket serveru.");
+        retryCount = 0; // Reset pokusů
     };
 
     socket.onmessage = (event) => {
-        const data = JSON.parse(event.data);
-        displayOverview(data);
+        try {
+            const data = JSON.parse(event.data);
+            if (data.type === "stats") {
+                displayOverview(data.data);
+            } else {
+                console.warn("Neznámý typ zprávy:", data);
+            }
+        } catch (error) {
+            console.error("Chyba při zpracování zprávy:", event.data, error);
+        }
     };
 
     socket.onclose = () => {
-        console.log("WebSocket connection closed. Attempting to reconnect...");
+        console.warn("WebSocket spojení uzavřeno. Pokus o znovupřipojení...");
         if (retryCount < 10) {
             retryCount++;
-            setTimeout(connectWebSocket, 1000 * retryCount);
+            setTimeout(connectWebSocket, 1000 * retryCount); // Exponenciální čekání
         } else {
-            console.log("Maximum retry attempts reached.");
+            console.error("Maximální počet pokusů o připojení dosažen.");
         }
     };
-}
 
-function displayOverview(data) {
-    const overviewDiv = document.getElementById("overview");
-    overviewDiv.innerHTML = '';
-    data.forEach(item => {
-        const entry = document.createElement("div");
-        entry.innerText = `${item[0]}: ${item[1]} káv`;
-        overviewDiv.appendChild(entry);
-    });
+    socket.onerror = (error) => {
+        console.error("Chyba WebSocket:", error);
+    };
 }
 
 document.addEventListener("DOMContentLoaded", () => {
     connectWebSocket();
 
     document.getElementById("submit-button").onclick = () => {
-        const user = document.getElementById("user").value;
-        const coffeeCount = document.getElementById("coffee-count").value;
+        const user = document.getElementById("user").value.trim();
+        const coffeeCount = parseInt(document.getElementById("coffee-count").value, 10);
+
+        if (!user) {
+            alert("Jméno uživatele je povinné.");
+            return;
+        }
+
+        if (isNaN(coffeeCount) || coffeeCount <= 0) {
+            alert("Počet káv musí být kladné číslo.");
+            return;
+        }
+
         if (socket.readyState === WebSocket.OPEN) {
-            socket.send(JSON.stringify({ user, coffee_count: coffeeCount }));
+            const message = {
+                type: "log_coffee",
+                user_id: user, // Simuluje ID uživatele
+                amount: coffeeCount
+            };
+            socket.send(JSON.stringify(message));
+            console.log("Zpráva odeslána:", message);
         } else {
-            alert("Connection is not open");
+            alert("WebSocket spojení není otevřené.");
         }
     };
 
-    // Tab switching logic
+    // Logika pro přepínání záložek
     document.getElementById("tab-drink").onclick = () => {
         document.getElementById("drink-tab-content").classList.add("active");
         document.getElementById("overview-tab-content").classList.remove("active");
