@@ -1,0 +1,119 @@
+1. Instalace MariaDB na VM
+Pro instalaci MariaDB postupujte podle těchto kroků:
+
+a) Aktualizace balíčků
+Spusťte následující příkazy:
+
+bash
+Zkopírovat kód
+sudo apt update
+sudo apt upgrade -y
+b) Instalace MariaDB
+Nainstalujte MariaDB server:
+
+bash
+Zkopírovat kód
+sudo apt install mariadb-server -y
+Po instalaci se ujistěte, že MariaDB běží:
+
+bash
+Zkopírovat kód
+sudo systemctl start mariadb
+sudo systemctl enable mariadb
+c) Zabezpečení MariaDB
+Spusťte skript pro základní zabezpečení:
+
+bash
+Zkopírovat kód
+sudo mysql_secure_installation
+Při průchodu tímto skriptem:
+
+Nastavte heslo pro uživatele root.
+Odeberte anonymní uživatele.
+Zakažte vzdálený přístup pro root.
+Odstraňte testovací databázi.
+Na závěr obnovte oprávnění.
+2. Vytvoření databáze a tabulek
+Přihlaste se do MariaDB příkazem:
+
+bash
+Zkopírovat kód
+sudo mysql -u root -p
+a) Vytvoření databáze
+Vytvořte novou databázi kafe_database:
+
+sql
+Zkopírovat kód
+CREATE DATABASE kafe_database;
+b) Vytvoření uživatele
+Vytvořte uživatele kafe_user s heslem kafe_password a udělte mu přístup k nové databázi:
+
+sql
+Zkopírovat kód
+CREATE USER 'kafe_user'@'%' IDENTIFIED BY 'kafe_password';
+GRANT ALL PRIVILEGES ON kafe_database.* TO 'kafe_user'@'%';
+FLUSH PRIVILEGES;
+c) Vytvoření tabulek
+Přepněte se na nově vytvořenou databázi:
+
+sql
+Zkopírovat kód
+USE kafe_database;
+Vytvořte tabulky podle požadavků projektu:
+
+Tabulka users
+sql
+Zkopírovat kód
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    registered_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+Tabulka coffee_log
+sql
+Zkopírovat kód
+CREATE TABLE coffee_log (
+    log_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    amount INT NOT NULL,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+Tabulka tasks
+sql
+Zkopírovat kód
+CREATE TABLE tasks (
+    task_id INT AUTO_INCREMENT PRIMARY KEY,
+    task_name VARCHAR(100) NOT NULL,
+    description TEXT,
+    assigned_to INT DEFAULT NULL,
+    status VARCHAR(20) DEFAULT 'pending',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    completed_at DATETIME NULL,
+    FOREIGN KEY (assigned_to) REFERENCES users(user_id)
+);
+Tabulka notifications
+sql
+Zkopírovat kód
+CREATE TABLE notifications (
+    notification_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    message TEXT NOT NULL,
+    is_read BOOLEAN DEFAULT FALSE,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+Po vytvoření tabulek zadejte příkaz:
+
+sql
+Zkopírovat kód
+EXIT;
+3. Úprava serverového kódu
+Nyní upravíme serverový kód (app.py), aby používal MariaDB místo SQLite nebo MSSQL.
+
+Instalace knihovny pro MariaDB
+Python využije knihovnu mysql-connector-python:
+
+bash
+Zkopírovat kód
+pip install mysql-connector-python
