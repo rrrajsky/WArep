@@ -2,7 +2,7 @@ let socket;
 let retryCount = 0;
 
 function connectWebSocket() {
-    socket = new WebSocket("ws://dev.spsejecna.net:20492");
+    socket = new WebSocket("ws://dev.spsejecna.net:20496");
 
     socket.onopen = () => {
         console.log("Připojeno k WebSocket serveru.");
