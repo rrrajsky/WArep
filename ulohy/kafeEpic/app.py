@@ -2,17 +2,16 @@ import asyncio
 import websockets
 import mysql.connector
 import json
-import datetime
 
-# Konfigurace připojení k MariaDB (změňte podle potřeby)
+# Configuration for MariaDB connection
 db_config = {
-    'host': 'localhost',  # Nebo IP adresa vašeho MariaDB serveru
-    'user': 'kafe_user',
-    'password': 'kafe_password',
-    'database': 'kafe_database'
+    'host': 'localhost',  # Or use IP address of your MariaDB server
+    'user': 'SEVER',       # Database username
+    'password': 'heslo123',  # Database password
+    'database': 'kafe_databaze'   # Database name
 }
 
-# Funkce pro připojení k databázi a provedení dotazu
+# Function to query the database
 def query_database(query, params=None):
     conn = mysql.connector.connect(**db_config)
     cursor = conn.cursor()
@@ -26,12 +25,16 @@ def query_database(query, params=None):
     conn.close()
     return result
 
-# Funkce pro záznam kávové aktivity
-def log_coffee(user_id, amount):
-    query = "INSERT INTO coffee_log (user_id, amount) VALUES (%s, %s)"
-    query_database(query, (user_id, amount))
+# Function to log coffee activity
+def log_coffee(username, amount):
+    query = "CALL insert_into_log(%s, %s)"
+    query_database(query, (username, amount))
 
-# Funkce pro získání statistik (kolik kávy vypil každý uživatel)
+def log_task(description):
+    query = "INSERT INTO tasks(description) VALUES (%s)"
+    query_database(query, (description,))
+
+# Function to get coffee statistics
 def get_coffee_stats():
     query = """
     SELECT u.username, SUM(c.amount) as total_coffee
@@ -40,48 +43,59 @@ def get_coffee_stats():
     GROUP BY u.username
     """
     results = query_database(query)
-    return [{'username': row[0], 'total_coffee': row[1]} for row in results]
+    return [{'username': row[0], 'total_coffee': int(row[1])} for row in results]
 
-# WebSocket server pro komunikaci s klienty
-async def handle_client(websocket, path):
-    print(f"New connection: {path}")
-    
+def get_tasks_stats():
+    query = """
+    SELECT t.description, t.status, t.owner
+    FROM tasks s
+    GROUP BY t.owner
+    """
+    results = query_database(query)
+    return [{'description': row[0], 'status': row[1], 'owner': row[2]} for row in results]
+
+# WebSocket handler for client connections
+async def handle_client(websocket):
+    print("New connection.")
     try:
-        # Průběžně posíláme aktualizace statistik každých 5 sekund
         while True:
             coffee_stats = get_coffee_stats()
             message = json.dumps({"type": "stats", "data": coffee_stats})
-            await websocket.send(message)
+            await websocket.send(message) 
 
             try:
                 client_message = await asyncio.wait_for(websocket.recv(), timeout=5)
                 data = json.loads(client_message)
 
-                # Zpracování zprávy
-                if 'type' not in data:
-                    print("Chybí 'type' ve zprávě:", data)
-                    continue
-
-                if data['type'] == 'log_coffee':
-                    user_id = data.get('user_id')  # Bezpečně načteme user_id
-                    amount = data.get('amount')   # Bezpečně načteme amount
-                    if user_id is not None and amount is not None:
+                if data.get('type') == 'log_coffee':
+                    user_id = data.get('user_id')
+                    amount = data.get('amount')
+                    if user_id and amount:
                         log_coffee(user_id, amount)
+                        print(f"Logged: {user_id} drank {amount} coffees.")
 
-                        # Po záznamu o kávě pošleme aktualizovaný přehled
                         coffee_stats = get_coffee_stats()
                         update_message = json.dumps({"type": "stats", "data": coffee_stats})
                         await websocket.send(update_message)
+		        
+                if data.get('type') == 'log_tasks':
+                    description = data.get('description')
+                    if description:
+                        log_task(description)
+                        print(f"Logged: {description} task added")
+
+                        
+
             except asyncio.TimeoutError:
                 continue
-    except websockets.ConnectionClosed:
-        print(f"Connection closed: {path}")
 
-# Spuštění serveru na portu 20492
+    except websockets.ConnectionClosed:
+        print("Connection closed.")
+
+# Start the server
 async def main():
-    server = await websockets.serve(handle_client, '0.0.0.0', 20492)
-    print("WebSocket server běží na portu 20492")
+    server = await websockets.serve(handle_client, '0.0.0.0', 8081)
+    print("WebSocket server running on port 8081")
     await server.wait_closed()
 
-# Spuštění serveru
 asyncio.run(main())
