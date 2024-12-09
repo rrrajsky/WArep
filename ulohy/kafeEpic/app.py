@@ -48,8 +48,7 @@ def get_coffee_stats():
 def get_tasks_stats():
     query = """
     SELECT t.description, t.status, t.owner
-    FROM tasks s
-    GROUP BY t.owner
+    FROM tasks t
     """
     results = query_database(query)
     return [{'description': row[0], 'status': row[1], 'owner': row[2]} for row in results]
@@ -58,10 +57,14 @@ def get_tasks_stats():
 async def handle_client(websocket):
     print("New connection.")
     try:
-        while True:
+       while True:
             coffee_stats = get_coffee_stats()
             message = json.dumps({"type": "stats", "data": coffee_stats})
+            tasks_stats = get_tasks_stats()
+            message = json.dumps({"type": "tasks", "data": tasks_stats})
+
             await websocket.send(message) 
+
 
             try:
                 client_message = await asyncio.wait_for(websocket.recv(), timeout=5)
@@ -84,13 +87,18 @@ async def handle_client(websocket):
                         log_task(description)
                         print(f"Logged: {description} task added")
 
-                        
+                        tasks_stats = get_tasks_stats()
+                        update_message = json.dumps({"type": "tasks", "data": tasks_stats})
+                        await websocket.send(update_message)
 
             except asyncio.TimeoutError:
+                print("Timeout expired while waiting for message")
                 continue
 
     except websockets.ConnectionClosed:
         print("Connection closed.")
+    except Exception as e:
+        print(f"Error occurred: {e}")
 
 # Start the server
 async def main():
