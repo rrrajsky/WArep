@@ -6,6 +6,7 @@
 - **Novotný Ondřej** ✨
 - **Matyáš Rajský** 🌟
 - **Vojtěch Matějs** ⚠️
+- **CHAT GPT** 💻
 
 ---
 
