@@ -148,7 +148,7 @@ let socket;
 
         function displayOverviewTasks(data) {
             const taskListDiv = document.getElementById("task-list");
-            
+            taskListDiv.innerHTML = "";
 
             if (!Array.isArray(data)) {
                 console.error("Přijatá data nejsou pole:", data);
