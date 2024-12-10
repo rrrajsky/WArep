@@ -127,7 +127,7 @@ let socket;
 
         function displayOverview(data) {
             const overviewDiv = document.getElementById("overview");
-            overviewDiv.innerHTML = "<h3>Přehled spotřeby kávy:</h3>";
+            overviewDiv.innerHTML = "";
 
             if (!Array.isArray(data)) {
                 console.error("Přijatá data nejsou pole:", data);
