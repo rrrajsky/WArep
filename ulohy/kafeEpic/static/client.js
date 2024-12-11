@@ -73,6 +73,7 @@ let socket;
 
             document.getElementById("add-task").onclick = () => {
                 const desc = document.getElementById("task-desc").value.trim();
+                const user = document.getElementById("task-user").value.trim();
                 if (!desc) {
                     alert("Popis je povinný.");
                     return;
