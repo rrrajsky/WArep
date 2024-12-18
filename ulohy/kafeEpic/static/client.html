@@ -7,7 +7,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="auth-section">
+        <h1>Přihlášení / Registrace</h1>
+        <label for="username">Uživatelské jméno:</label>
+        <input type="text" id="username" placeholder="Vaše jméno">
+        <label for="password">Heslo:</label>
+        <input type="password" id="password" placeholder="Vaše heslo">
+        <button id="login-button">Přihlásit se</button>
+        <button id="register-button">Registrovat</button>
+    </div>
+    
+    <div class="container" id="app-section" style="display: none;">
         <h1>Spotřeba kávy</h1>
         <div class="tabs">
             <button id="tab-drink" class="tab active">Zadat spotřebu</button>
@@ -29,10 +39,11 @@
             <h2>Seznam úkolů</h2>
             <div id="task-list" class="KAREL"></div> <!-- Kontejner pro seznam úkolů -->
             <input type="text" id="task-desc" placeholder="Popis nového úkolu">
-            <input type="text" id="task-user" placeholder="Uživatel">
+            
             <button id="add-task">Přidat úkol</button>
         </div>
     </div>
+    
     <script src="client.js"></script>
 </body>
 </html>
